@@ -1,0 +1,25 @@
+mysql> SELECT name, title from authors INNER JOIN authors_books ON (authors.id = authors_books.author_id) INNER JOIN books ON (books.id = authors_books.book_id);
++-----------------+--------------------+
+| name            | title              |
++-----------------+--------------------+
+| Михаил Булгаков | Мастер и Маргарита |
+| Иоган Гёте      | Фауст              |
+| Ждек Лондон     | Белый клык         |
+| Френк Герберт   | Дюна               |
++-----------------+--------------------+
+4 rows in set (0.01 sec)
+
+mysql> SELECT name, title, genre from authors INNER JOIN authors_books ON (authors.id = authors_books.author_id) INNER JOIN books ON (books.id = authors_books.book_id) INNER JOIN genres ON (genres.id = books.genre_id);
+ERROR 2006 (HY000): MySQL server has gone away
+No connection. Trying to reconnect...
+Connection id:    13
+Current database: asdfgh
+
++-----------------+--------------------+-------+
+| name            | title              | genre |
++-----------------+--------------------+-------+
+| Френк Герберт   | Дюна               | SF    |
+| Михаил Булгаков | Мастер и Маргарита | novel |
+| Ждек Лондон     | Белый клык         | story |
++-----------------+--------------------+-------+
+3 rows in set (0.04 sec)
